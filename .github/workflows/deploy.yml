@@ -40,7 +40,7 @@ jobs:
       - name: 📥 Check out repository code
         uses: actions/checkout@v3
 
-      # FIX: Direct pre-authorized token connection path bypassing OAuth API walls
+      # FIX: Force direct authkey mapping token use to bypass the old 403 cached paths completely
       - name: 🚀 Connect securely to Tailscale Mesh Network
         uses: tailscale/github-action@v2
         with:
