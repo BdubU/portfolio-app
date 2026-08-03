@@ -40,18 +40,16 @@ jobs:
       - name: 📥 Check out repository code
         uses: actions/checkout@v3
 
-      # FIX: Temporary mesh authorization to bypass physical firewalls securely
+      # FIX: Direct pre-authorized token connection path bypassing OAuth API walls
       - name: 🚀 Connect securely to Tailscale Mesh Network
         uses: tailscale/github-action@v2
         with:
-          oauth-client-id: ${{ secrets.TS_API_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_API_CLIENT_SECRET }}
-          tags: tag:ci
+          authkey: ${{ secrets.TAILSCALE_AUTHKEY }}
 
       - name: 🔐 Configure encrypted SSH key access handshake
         uses: appleboy/ssh-action@v0.1.10
         with:
-          host: ${{ secrets.SERVER_HOST_IP }} # USE YOUR TAILSCALE SERVER IP HERE!
+          host: ${{ secrets.SERVER_HOST_IP }}
           username: ${{ secrets.SERVER_SSH_USER }}
           key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
           port: 22
