@@ -46,7 +46,7 @@ jobs:
         with:
           oauth-client-id: ${{ secrets.TS_API_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_API_CLIENT_SECRET }}
-          tags: tag:server
+          tags: tag:ci
 
       - name: 🔐 Configure encrypted SSH key access handshake
         uses: appleboy/ssh-action@v0.1.10
